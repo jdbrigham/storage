@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Canvas Line Drawer (Autosave)</title>
+  <style>
+    :root { --toolbar-h: 56px; --bg: #ffffff; --ink: #222; --muted: #6b7280; --border: #e5e7eb; --accent: #0a7; --btn: #f3f4f6; --btn-border: #e5e7eb; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; color: var(--ink);
+      font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg); display: flex; flex-direction: column;
+    }
+    header.toolbar {
+      height: var(--toolbar-h); display: flex; align-items: center; gap: 12px;
+      padding: 8px 12px; border-bottom: 1px solid var(--border);
+      background: #fff; position: sticky; top: 0; z-index: 10;
+    }
+    .group { display: inline-flex; align-items: center; gap: 8px; padding-right: 8px; border-right: 1px solid var(--border); }
+    .group:last-child { border-right: none; }
+    label { font-size: 12px; color: var(--muted); }
+    input[type="color"] { width: 36px; height: 28px; padding: 0; border: 1px solid var(--btn-border); border-radius: 6px; }
+    input[type="range"] { width: 120px; }
+    button.btn {
+      height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--btn-border);
+      background: var(--btn); color: #111; cursor: pointer;
+    }
+    button.btn:disabled { opacity: .5; cursor: default; }
+    .status { margin-left: auto; color: var(--accent); font-weight: 600; min-width: 100px; text-align: right; }
+    main { position: relative; flex: 1; min-height: 0; }
+    #board {
+      display: block; width: 100%; height: calc(100vh - var(--toolbar-h)); background: #fff; touch-action: none;
+    }
+    #hint {
+      position: absolute; left: 12px; bottom: 12px; padding: 6px 8px; font-size: 12px; color: #111;
+      background: rgba(255,255,255,.7); border: 1px solid var(--border); border-radius: 6px; backdrop-filter: blur(4px);
+    }
+    .spacer { width: 4px; }
+    input[type="file"] { display: none; }
+  </style>
+</head>
+<body>
+  <header class="toolbar" aria-label="Drawing toolbar">
+    <div class="group" role="group" aria-label="Style">
+      <label for="color">Color</label>
+      <input id="color" type="color" value="#1f6feb" />
+      <label for="width">Width</label>
+      <input id="width" type="range" min="1" max="20" step="1" value="3" />
+      <span id="widthVal" aria-live="polite">3px</span>
+    </div>
+
+    <div class="group" role="group" aria-label="Edit">
+      <button id="undo" class="btn" title="Undo (Ctrl/Cmd+Z)">Undo</button>
+      <button id="redo" class="btn" title="Redo (Ctrl+Shift+Z or Ctrl+Y)">Redo</button>
+      <button id="clear" class="btn" title="Clear all lines">Clear</button>
+    </div>
+
+    <div class="group" role="group" aria-label="View">
+      <label><input type="checkbox" id="grid" /> Grid</label>
+    </div>
+
+    <div class="group" role="group" aria-label="Export/Import">
+      <button id="exportPng" class="btn">Export PNG</button>
+      <button id="exportJson" class="btn">Export JSON</button>
+      <button id="importJson" class="btn">Import JSON</button>
+      <input id="fileInput" type="file" accept="application/json,.json" />
+    </div>
+
+    <div id="status" class="status" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <canvas id="board"></canvas>
+    <div id="hint">Click to start, move to preview, click again to finish. Hold ⇧ Shift to snap 45°.</div>
+  </main>
+
+  <script>
+    (() => {
+      const STORAGE_KEY = 'line-drawer-v1';
+
+      // Elements
+      const canvas = document.getElementById('board');
+      const ctx = canvas.getContext('2d');
+      const colorInput = document.getElementById('color');
+      const widthInput = document.getElementById('width');
+      const widthVal   = document.getElementById('widthVal');
+      const undoBtn = document.getElementById('undo');
+      const redoBtn = document.getElementById('redo');
+      const clearBtn = document.getElementById('clear');
+      const gridCheckbox = document.getElementById('grid');
+      const exportPngBtn = document.getElementById('exportPng');
+      const exportJsonBtn = document.getElementById('exportJson');
+      const importJsonBtn = document.getElementById('importJson');
+      const fileInput = document.getElementById('fileInput');
+      const statusEl = document.getElementById('status');
+
+      // State
+      /** Lines are stored with normalized coordinates (0..1) so they scale with the canvas size */
+      let lines = []; // {start:{x,y}, end:{x,y}, color, width}
+      let redoStack = [];
+      let isDrawing = false;
+      let startPt = null;  // in CSS pixels
+      let currentPt = null; // in CSS pixels
+
+      // --- Utilities ---
+      function resizeCanvasToDisplaySize() {
+        const dpr = window.devicePixelRatio || 1;
+        // Keep CSS size set by layout, match backing store to avoid blurriness
+        const { width: cssW, height: cssH } = canvas.getBoundingClientRect();
+        const w = Math.max(1, Math.round(cssW * dpr));
+        const h = Math.max(1, Math.round(cssH * dpr));
+        if (canvas.width !== w || canvas.height !== h) {
+          canvas.width = w;
+          canvas.height = h;
+          // Scale all drawing ops to CSS pixels
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        render();
+      }
+
+      function showSaved() {
+        statusEl.textContent = 'Autosaved ✓';
+        clearTimeout(showSaved._t);
+        showSaved._t = setTimeout(() => (statusEl.textContent = ''), 1200);
+      }
+
+      function save() {
+        try {
+          const data = { v: 1, lines, color: colorInput.value, width: Number(widthInput.value) };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+          showSaved();
+        } catch (e) {
+          console.warn('Save failed:', e);
+        }
+        updateButtons();
+      }
+
+      function load() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        try {
+          const data = JSON.parse(raw);
+          if (data && Array.isArray(data.lines)) {
+            lines = data.lines.filter(validLine);
+            redoStack = [];
+            if (data.color) colorInput.value = data.color;
+            if (data.width) {
+              widthInput.value = String(data.width);
+              widthVal.textContent = `${data.width}px`;
+            }
+          }
+        } catch (e) {
+          console.warn('Load failed:', e);
+        }
+        updateButtons();
+      }
+
+      function validLine(L) {
+        return L && L.start && L.end &&
+               isFinite(L.start.x) && isFinite(L.start.y) &&
+               isFinite(L.end.x) && isFinite(L.end.y) &&
+               typeof L.color === 'string' && isFinite(L.width);
+      }
+
+      function toNorm(pt) {
+        const w = canvas.clientWidth || 1;
+        const h = canvas.clientHeight || 1;
+        return { x: Math.max(0, Math.min(1, pt.x / w)), y: Math.max(0, Math.min(1, pt.y / h)) };
+      }
+
+      function fromNorm(pt) {
+        return { x: pt.x * (canvas.clientWidth || 0), y: pt.y * (canvas.clientHeight || 0) };
+      }
+
+      function getPos(evt) {
+        const rect = canvas.getBoundingClientRect();
+        return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+      }
+
+      function snapTo45(start, cur) {
+        const dx = cur.x - start.x;
+        const dy = cur.y - start.y;
+        const r = Math.hypot(dx, dy);
+        if (r === 0) return cur;
+        const angle = Math.atan2(dy, dx);
+        const snapped = Math.round(angle / (Math.PI / 4)) * (Math.PI / 4);
+        return { x: start.x + r * Math.cos(snapped), y: start.y + r * Math.sin(snapped) };
+      }
+
+      // --- Rendering ---
+      function drawLine(p1, p2, color, width, dash = null) {
+        ctx.save();
+        if (dash) ctx.setLineDash(dash);
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawGrid() {
+        const step = 50; // CSS pixels
+        ctx.save();
+        ctx.strokeStyle = '#eee';
+        ctx.lineWidth = 1;
+        // vertical
+        for (let x = 0; x <= canvas.clientWidth; x += step) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.clientHeight); ctx.stroke();
+        }
+        // horizontal
+        for (let y = 0; y <= canvas.clientHeight; y += step) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.clientWidth, y); ctx.stroke();
+        }
+        ctx.restore();
+      }
+
+      function render(preview = null) {
+        ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+        if (gridCheckbox.checked) drawGrid();
+        for (const L of lines) {
+          const p1 = fromNorm(L.start);
+          const p2 = fromNorm(L.end);
+          drawLine(p1, p2, L.color, L.width);
+        }
+        if (preview) {
+          drawLine(preview.start, preview.end, preview.color, preview.width, [6, 6]); // dashed preview
+        }
+      }
+
+      // --- Interaction ---
+      function updateButtons() {
+        undoBtn.disabled = lines.length === 0;
+        redoBtn.disabled = redoStack.length === 0;
+      }
+
+      canvas.addEventListener('pointerdown', (e) => {
+        if (e.button !== 0) return; // left button only
+        e.preventDefault();
+        canvas.setPointerCapture(e.pointerId);
+        isDrawing = true;
+        startPt = getPos(e);
+        currentPt = startPt;
+        const preview = makePreview(e);
+        render(preview);
+      });
+
+      function makePreview(e) {
+        const temp = getPos(e);
+        const end = e.shiftKey ? snapTo45(startPt, temp) : temp;
+        return { start: startPt, end, color: colorInput.value, width: Number(widthInput.value) };
+      }
+
+      canvas.addEventListener('pointermove', (e) => {
+        if (!isDrawing) return;
+        currentPt = getPos(e);
+        render(makePreview(e));
+      });
+
+      function finalize(e) {
+        const endPt = e ? (e.shiftKey ? snapTo45(startPt, getPos(e)) : getPos(e)) : currentPt;
+        const newLine = {
+          start: toNorm(startPt),
+          end: toNorm(endPt),
+          color: colorInput.value,
+          width: Number(widthInput.value)
+        };
+        lines.push(newLine);
+        redoStack.length = 0;
+        save();
+        render();
+      }
+
+      canvas.addEventListener('pointerup', (e) => {
+        if (!isDrawing) return;
+        finalize(e);
+        isDrawing = false;
+        startPt = currentPt = null;
+        try { canvas.releasePointerCapture(e.pointerId); } catch {}
+      });
+
+      canvas.addEventListener('pointerleave', () => {
+        // Keep preview active; user may re-enter. No action.
+      });
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        const k = e.key.toLowerCase();
+        if ((e.ctrlKey || e.metaKey) && k === 'z' && !e.shiftKey) {
+          e.preventDefault(); undoBtn.click();
+        } else if ((e.ctrlKey || e.metaKey) && (k === 'y' || (k === 'z' && e.shiftKey))) {
+          e.preventDefault(); redoBtn.click();
+        } else if (k === 'escape') {
+          if (isDrawing) {
+            isDrawing = false;
+            startPt = currentPt = null;
+            render();
+          }
+        }
+      });
+
+      // Buttons
+      undoBtn.addEventListener('click', () => {
+        if (!lines.length) return;
+        redoStack.push(lines.pop());
+        save(); render();
+      });
+
+      redoBtn.addEventListener('click', () => {
+        if (!redoStack.length) return;
+        lines.push(redoStack.pop());
+        save(); render();
+      });
+
+      clearBtn.addEventListener('click', () => {
+        if (!lines.length) return;
+        if (confirm('Clear all lines?')) {
+          lines = []; redoStack = []; save(); render();
+        }
+      });
+
+      gridCheckbox.addEventListener('change', () => render());
+
+      exportPngBtn.addEventListener('click', () => {
+        // Use current canvas content
+        canvas.toBlob((blob) => {
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 'lines.png';
+          a.click();
+          URL.revokeObjectURL(a.href);
+        }, 'image/png');
+      });
+
+      exportJsonBtn.addEventListener('click', () => {
+        const data = { v: 1, lines, color: colorInput.value, width: Number(widthInput.value) };
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'lines.json'; a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      importJsonBtn.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (!data || !Array.isArray(data.lines)) throw new Error('Invalid file: missing "lines" array.');
+          lines = data.lines.filter(validLine);
+          redoStack = [];
+          if (data.color) colorInput.value = data.color;
+          if (data.width) {
+            widthInput.value = String(data.width);
+            widthVal.textContent = `${data.width}px`;
+          }
+          save(); render();
+        } catch (err) {
+          alert('Failed to import JSON: ' + err.message);
+        } finally {
+          e.target.value = '';
+        }
+      });
+
+      widthInput.addEventListener('input', () => (widthVal.textContent = `${widthInput.value}px`));
+
+      // Init
+      load();
+      // Ensure crisp drawing on initial layout
+      window.addEventListener('resize', resizeCanvasToDisplaySize);
+      // Kick once after layout
+      requestAnimationFrame(resizeCanvasToDisplaySize);
+      render();
+    })();
+  </script>
+</body>
+</html>
+``
