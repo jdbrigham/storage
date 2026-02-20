@@ -267,11 +267,14 @@ const SILHOUETTE_FILE = 'silhouette.png';
 //   Negative → image shifts UP   (ridge appears higher in the frame)
 const SILHOUETTE_OFFSET_Y = 0;
 
-// Where the ridgeline sits within the silhouette image, as a fraction of
-// the image height (0 = top, 1 = bottom). Controls where the light-pollution
-// glow anchors itself so it tracks the ridge rather than the math horizon.
-// 0.05 works when the ridge is near the top of the image; increase if needed.
-const SILHOUETTE_RIDGE_FRAC = 0.05;
+// ── Light-pollution glow ──────────────────────────────────
+// Set to false to disable the glow entirely.
+const SILHOUETTE_GLOW = false;
+// Vertical offset in pixels to position the glow relative to the ridge.
+//   Positive → glow moves DOWN (below the ridge, more hidden by silhouette)
+//   Negative → glow moves UP   (above the ridge, into the sky)
+// Start at 0 and adjust until the glow sits where you want it.
+const SILHOUETTE_GLOW_OFFSET_Y = 0;
 
 // ── Field of view ──────────────────────────────────────────
 // Horizontal degrees of azimuth visible across the full canvas width.
@@ -645,39 +648,36 @@ function drawLandscape() {
   landCtx.clearRect(0, 0, w, h);
   const horizonY = h * HORIZON_FRAC;
 
-  // Compute the Y position of the visible ridgeline so the glow tracks it.
-  // For PNG silhouette: the top of the image (where sky meets ridge) sits at
-  // drawY, which we derive from the image aspect ratio + SILHOUETTE_OFFSET_Y.
-  // For procedural mountains we use horizonY directly.
-  let glowY = horizonY;
-  if (silhouetteImg) {
-    const aspect = silhouetteImg.naturalWidth / silhouetteImg.naturalHeight;
-    const drawH  = w / aspect;
-    const drawY  = h - drawH + SILHOUETTE_OFFSET_Y;
-    // Ridgeline sits somewhere in the upper portion of the image —
-    // approximating it as 15% from the top of the drawn image is a good default.
-    // Adjust SILHOUETTE_RIDGE_FRAC (0–1) if your image needs fine-tuning.
-    glowY = drawY + drawH * SILHOUETTE_RIDGE_FRAC;
-  }
-
   // ── Light-pollution glow (drawn BEHIND the silhouette) ──
-  const amb = landCtx.createLinearGradient(0, glowY - 30, 0, glowY + 10);
-  amb.addColorStop(0, 'rgba(0,0,0,0)');
-  amb.addColorStop(1, 'rgba(15,8,2,0.6)');
-  landCtx.fillStyle = amb;
-  landCtx.fillRect(0, glowY - 30, w, 40);
+  if (SILHOUETTE_GLOW) {
+    // Glow Y: top of the silhouette image (where sky meets ridge) + offset.
+    // For procedural mountains, falls back to the mathematical horizonY.
+    let glowY = horizonY;
+    if (silhouetteImg) {
+      const aspect = silhouetteImg.naturalWidth / silhouetteImg.naturalHeight;
+      const drawH  = w / aspect;
+      const drawY  = h - drawH + SILHOUETTE_OFFSET_Y;
+      glowY = drawY + SILHOUETTE_GLOW_OFFSET_Y;
+    }
 
-  const glowL = landCtx.createRadialGradient(w * 0.3, glowY, 0, w * 0.3, glowY, w * 0.45);
-  glowL.addColorStop(0, 'rgba(90,42,8,0.28)');
-  glowL.addColorStop(1, 'rgba(0,0,0,0)');
-  landCtx.fillStyle = glowL;
-  landCtx.fillRect(0, glowY - 60, w, 80);
+    const amb = landCtx.createLinearGradient(0, glowY - 30, 0, glowY + 10);
+    amb.addColorStop(0, 'rgba(0,0,0,0)');
+    amb.addColorStop(1, 'rgba(15,8,2,0.6)');
+    landCtx.fillStyle = amb;
+    landCtx.fillRect(0, glowY - 30, w, 40);
 
-  const glowR = landCtx.createRadialGradient(w * 0.72, glowY, 0, w * 0.72, glowY, w * 0.35);
-  glowR.addColorStop(0, 'rgba(70,30,5,0.20)');
-  glowR.addColorStop(1, 'rgba(0,0,0,0)');
-  landCtx.fillStyle = glowR;
-  landCtx.fillRect(0, glowY - 60, w, 80);
+    const glowL = landCtx.createRadialGradient(w * 0.3, glowY, 0, w * 0.3, glowY, w * 0.45);
+    glowL.addColorStop(0, 'rgba(90,42,8,0.28)');
+    glowL.addColorStop(1, 'rgba(0,0,0,0)');
+    landCtx.fillStyle = glowL;
+    landCtx.fillRect(0, glowY - 60, w, 80);
+
+    const glowR = landCtx.createRadialGradient(w * 0.72, glowY, 0, w * 0.72, glowY, w * 0.35);
+    glowR.addColorStop(0, 'rgba(70,30,5,0.20)');
+    glowR.addColorStop(1, 'rgba(0,0,0,0)');
+    landCtx.fillStyle = glowR;
+    landCtx.fillRect(0, glowY - 60, w, 80);
+  }
 
   // ── Silhouette drawn ON TOP of glow ──────────────────────
   if (silhouetteImg) {
