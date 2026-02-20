@@ -320,7 +320,7 @@ function raDecToAltAz(ra_hours, dec_deg, date) {
 }
 // Better: equirectangular-like projection centered on south
 function projectStar(alt, az, w, h) {
-  const horizonY = h * 0.93;
+  const horizonY = h * 0.73;
   // Center view on South (az=180)
   let daz = az - 180;
   if (daz > 180) daz -= 360;
@@ -371,7 +371,7 @@ function drawLandscape() {
   const w = landCanvas.width;
   const h = landCanvas.height;
   landCtx.clearRect(0, 0, w, h);
-  const horizonY = h * 0.93;
+  const horizonY = h * 0.73;
 
   // Sky-to-horizon ambient — matches the warm pollution glow drawn in sky layer
   const horizAmb = landCtx.createLinearGradient(0, horizonY - 30, 0, horizonY + 10);
@@ -436,7 +436,7 @@ function drawMountainLayer(ctx, w, h, horizonY, heightFactor, variance, peaks, c
 function drawSky() {
   const w = skyCanvas.width;
   const h = skyCanvas.height;
-  const horizonY = h * 0.93;
+  const horizonY = h * 0.73;
   skyCtx.clearRect(0, 0, w, h);
 
   // Deep photographic sky: rich indigo-to-near-black
