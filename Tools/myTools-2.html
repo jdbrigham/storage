@@ -264,8 +264,36 @@
       position: absolute;
       /* top: 600px; */
       position: absolute;
-  top: 80%; right: 50%;
-  transform: translate(50%,-50%);
+      top: 80%;
+      right: 50%;
+      transform: translate(50%, -50%);
+    }
+
+    /* Draggable SVG segment (treated like a card) */
+    .segment {
+      position: absolute;
+      user-select: none;
+      touch-action: none;
+      cursor: grab;
+    }
+
+    .segment:active {
+      cursor: grabbing;
+    }
+
+    /* Keep strokes the same pixel width regardless of zoom */
+    .non-scaling {
+      vector-effect: non-scaling-stroke;
+      /* key for consistent stroke width */
+    }
+
+    /* Optional label styling for lines */
+    .line-label {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      font-size: 13px;
+      fill: #111827;
+      dominant-baseline: middle;
+      text-anchor: middle;
     }
   </style>
 </head>
@@ -325,87 +353,51 @@
       </div>
     </div>
 
-<svg
-   width="793"
-   height="100"
-   viewBox="0 0 210 26.458333"
-   version="1.1"
-   id="svg1"
-   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
-   sodipodi:docname="line-example.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-   />
-  <defs
-     id="defs1" />
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <path
-       style="opacity:0.82;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       d="M 7.4865396,13.563143 H 202.13657"
-       id="path1" />
-    <circle
-       style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2"
-       cx="21.57885"
-       cy="13.229167"
-       r="5.284616" />
-    <circle
-       style="opacity:0.82;fill:#4b4b4b;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2-2"
-       cx="52.547096"
-       cy="13.229167"
-       r="5.284616" />
-    <circle
-       style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2-9"
-       cx="83.515343"
-       cy="13.229167"
-       r="5.284616" />
-    <circle
-       style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2-97"
-       cx="114.48358"
-       cy="13.229167"
-       r="5.284616" />
-    <circle
-       style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2-6"
-       cx="145.45183"
-       cy="13.229167"
-       r="5.284616" />
-    <circle
-       style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       id="path2-7"
-       cx="176.42007"
-       cy="13.229167"
-       r="5.284616" />
+    <svg width="793" height="100" viewBox="0 0 210 26.458333" version="1.1" id="svg1"
+      inkscape:version="1.4.2 (ebf0e940, 2025-05-08)" sodipodi:docname="line-example.svg"
+      xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+      xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg"
+      xmlns:svg="http://www.w3.org/2000/svg">
+      />
+      <defs id="defs1" />
+      <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+        <path
+          style="opacity:0.82;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          d="M 7.4865396,13.563143 H 202.13657" id="path1" />
+        <circle
+          style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2" cx="21.57885" cy="13.229167" r="5.284616" />
+        <circle
+          style="opacity:0.82;fill:#4b4b4b;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2-2" cx="52.547096" cy="13.229167" r="5.284616" />
+        <circle
+          style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2-9" cx="83.515343" cy="13.229167" r="5.284616" />
+        <circle
+          style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2-97" cx="114.48358" cy="13.229167" r="5.284616" />
+        <circle
+          style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2-6" cx="145.45183" cy="13.229167" r="5.284616" />
+        <circle
+          style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
+          id="path2-7" cx="176.42007" cy="13.229167" r="5.284616" />
 
-       <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:black;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="14"
-       y="25"
-       id="text1"><tspan
-         sodipodi:role="line"
-         id="tspan1"
-         x="14"
-         y="25"
-         style="font-size:5px;stroke-width:0.264583">IDEA</tspan></text>
-  </g>
-</svg>
+        <text xml:space="preserve"
+          style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:black;fill-opacity:1;stroke:none;stroke-width:0.264583"
+          x="14" y="25" id="text1">
+          <tspan sodipodi:role="line" id="tspan1" x="14" y="25" style="font-size:5px;stroke-width:0.264583">IDEA</tspan>
+        </text>
+      </g>
+    </svg>
 
 
 
-   
 
 
 
-   
+
+
 
   </div>
   </div>

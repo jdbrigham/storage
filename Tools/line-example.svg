@@ -2,12 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="793.70081"
-   height="100"
-   viewBox="0 0 210 26.458333"
+   width="793.70099"
+   height="200"
+   viewBox="0 0 210.00005 52.916666"
    version="1.1"
    id="svg1"
-   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
    sodipodi:docname="line-example.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -24,12 +24,12 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="1.438764"
-     inkscape:cx="134.49044"
-     inkscape:cy="111.9016"
-     inkscape:window-width="1256"
-     inkscape:window-height="792"
-     inkscape:window-x="221"
-     inkscape:window-y="33"
+     inkscape:cx="134.83796"
+     inkscape:cy="111.55408"
+     inkscape:window-width="2096"
+     inkscape:window-height="1062"
+     inkscape:window-x="3256"
+     inkscape:window-y="263"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1" />
   <defs
@@ -40,54 +40,65 @@
      id="layer1">
     <path
        style="opacity:0.82;fill:none;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
-       d="M 7.4865396,13.563143 H 202.13657"
+       d="M 7.6704359,24.596919 H 202.32047"
        id="path1" />
     <circle
        style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2"
-       cx="21.57885"
-       cy="13.229167"
+       cx="21.762747"
+       cy="24.262943"
        r="5.284616" />
     <circle
        style="opacity:0.82;fill:#4b4b4b;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2-2"
-       cx="52.547096"
-       cy="13.229167"
+       cx="52.730991"
+       cy="24.262943"
        r="5.284616" />
     <circle
        style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2-9"
-       cx="83.515343"
-       cy="13.229167"
+       cx="83.699242"
+       cy="24.262943"
        r="5.284616" />
     <circle
        style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2-97"
-       cx="114.48358"
-       cy="13.229167"
+       cx="114.66748"
+       cy="24.262943"
        r="5.284616" />
     <circle
        style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2-6"
-       cx="145.45183"
-       cy="13.229167"
+       cx="145.63573"
+       cy="24.262943"
        r="5.284616" />
     <circle
        style="opacity:0.82;fill:#fcfcfc;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linejoin:bevel;stroke-dasharray:none"
        id="path2-7"
-       cx="176.42007"
-       cy="13.229167"
+       cx="176.60397"
+       cy="24.262943"
        r="5.284616" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:black;fill-opacity:1;stroke:none;stroke-width:0.264583"
-       x="14.895597"
-       y="23.906515"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="15.263391"
+       y="38.434322"
        id="text1"><tspan
          sodipodi:role="line"
          id="tspan1"
-         x="14.895597"
-         y="23.906515"
+         x="15.263391"
+         y="38.434322"
          style="font-size:5.29167px;stroke-width:0.264583">IDEA</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.29167px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="45.935184"
+       y="38.507729"
+       id="text1-0"><tspan
+         sodipodi:role="line"
+         id="tspan1-5"
+         x="45.935184"
+         y="38.507729"
+         style="font-size:5.29167px;stroke-width:0.264583">Alpha</tspan></text>
   </g>
 </svg>
