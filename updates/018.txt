@@ -1,0 +1,9 @@
+<!-- 018 - Lake Reading -->
+
+<b>Status Notes:</b>Incorporate the new changes, make sure the link works and iterate.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/018-reading/w/'</a>github_working-files/018-reading/w/</li>
+</ul>
+</details>

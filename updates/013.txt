@@ -1,0 +1,9 @@
+<!-- 013 - Postcards site -->
+
+<b>Status Notes:</b>Done, no next steps except to finalize and fix new location.  Also, check QR code links from printed cards and 'contact me' email address.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/013-postcards/w/'</a>github_working-files/013-postcards/w/</li>
+</ul>
+</details>

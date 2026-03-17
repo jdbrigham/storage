@@ -1,0 +1,9 @@
+<!-- 023 - 3D Gallery Sphere -->
+
+<b>Status Notes:</b>Now have a working initial version but need to find a home for it.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>No local files yet</li>
+</ul>
+</details>

@@ -1,0 +1,9 @@
+<!-- 020 - Secret Santa -->
+
+<b>Status Notes:</b>Add info from Christmas '24, and perhaps other years.  Add photos?</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/020-ss/w/'</a>github_working-files/020-ss/w/</li>
+</ul>
+</details>

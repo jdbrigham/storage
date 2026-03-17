@@ -1,0 +1,9 @@
+<!-- 017 - Lego house model -->
+
+<b>Status Notes:</b>Next step is probably to order some pieces</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:////Users/jbrigham/Library/CloudStorage/OneDrive-Personal/BullpenProjects/_LEGO/'</a>OneDrive-Personal/BullpenProjects/_LEGO/</li>
+</ul>
+</details>

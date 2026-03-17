@@ -1,0 +1,9 @@
+<!-- 035 - Red Sox Standings -->
+
+<b>Status Notes:</b>Time to update for new season</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/035-playball/w/'</a>github_working-files/035-playball/w/</li>
+</ul>
+</details>

@@ -1,0 +1,9 @@
+<!-- 030 - Virtual Nikon Menus -->
+
+<b>Status Notes:</b>Revisit and record progress in terms of how many screens are functional</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/030-nikonmenus'</a>mbp.local_working-files/030-nikonmenus</li>
+</ul>
+</details>

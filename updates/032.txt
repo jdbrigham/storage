@@ -1,0 +1,9 @@
+<!-- 032 - Gyroscopic Panorama -->
+
+<b>Status Notes:</b>Four approaches are linked - need to evaluate them.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/032-gyroscopic-panorama'</a>github_working-files/032-gyroscopic-panorama</li>
+</ul>
+</details>

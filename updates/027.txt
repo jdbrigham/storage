@@ -1,0 +1,9 @@
+<!-- 027 - Test Strip Mosaic -->
+
+<b>Status Notes:</b>Maybe worth revisiting but may have done as far as it can go</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/027-mosaic'</a>mbp.local_working-files/027-mosaic</li>
+</ul>
+</details>

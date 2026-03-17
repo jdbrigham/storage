@@ -1,0 +1,9 @@
+<!-- 012 - Photo Flash Cards -->
+
+<b>Status Notes:</b>I think I now have a good template/foundation so it's just a matter of continuing to iterate.  Have 6 cards done, I think.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Library/Mobile Documents/com~apple~CloudDocs/Files/PhotoCards'</a>CloudDocs/Files/PhotoCards</li>
+</ul>
+</details>

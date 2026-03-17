@@ -1,0 +1,9 @@
+<!-- 033 - Lake Compass -->
+
+<b>Status Notes:</b>Mostly done</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/033-rwty'</a>github_working-files/033-rwty</li>
+</ul>
+</details>

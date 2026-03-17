@@ -1,0 +1,9 @@
+<!-- 007 - Re-create Number Links -->
+
+<b>Status Notes:</b>Initial exercise is pretty much done but no clear use case for it</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/007-numberlinks/'</a>mbp.local_working-files/007-numberlinks/</li>
+</ul>
+</details>

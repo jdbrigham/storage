@@ -1,0 +1,9 @@
+<!-- 036 - Picture Cube -->
+
+<b>Status Notes:</b>Revisit and test, looking maybe ahead to Christmas 2025.  Or Mom's birthday?</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/036-responsive-3d-cube'</a>github_working-files/036-responsive-3d-cube</li>
+</ul>
+</details>

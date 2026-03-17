@@ -1,0 +1,10 @@
+<!-- 009 - FS Day Long -->
+
+<b>Status Notes:</b>Next:  create a new numbered version based on all the experimental work I've done</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/009-tl/w/'</a>github_working-files/009-tl/w/</li>
+<li>Notes: <a href='statusnotes/009.html' target="_blank">Project 009 Notes</a></li>
+</ul>
+</details>

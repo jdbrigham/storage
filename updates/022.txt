@@ -1,0 +1,9 @@
+<!-- 022 - Photosphere Gallery -->
+
+<b>Status Notes:</b>Next steps: Refine styling, connect more photoshpheres.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/022-photosphere-gallery'</a>github_working-files/022-photosphere-gallery</li>
+</ul>
+</details>

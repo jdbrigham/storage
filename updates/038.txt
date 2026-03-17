@@ -1,0 +1,10 @@
+<!-- 038 - This -->
+
+<b>Status Notes/Next Steps:</b>Keep adding and iterating</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/localhost_working-files/all-projects'</a>localhost_working-files/all-projects</a></li>
+<li>Notes: <a href='statusnotes/038.html' target="_blank">Project 038 Notes</a></li>
+</ul>
+</details>

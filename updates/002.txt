@@ -1,0 +1,9 @@
+<!-- 002 - Wall Grid -->
+
+<b>Status Notes:</b>Existing site is almost fully functional but some php is used in individual photo pages so those need updating and testing</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/002-wallgrid/w/'</a>github_working-files/002-wallgrid/w/</li>
+</ul>
+</details>

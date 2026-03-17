@@ -1,0 +1,9 @@
+<!-- 011 - Advent Calendar Photo Page -->
+
+<b>Status Notes:</b>Revist and possibly work on ahead of Christmas 2025.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/011-adventcalendar/'</a>github_working-files/011-adventcalendar/</li>
+</ul>
+</details>

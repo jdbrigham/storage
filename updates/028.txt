@@ -1,0 +1,9 @@
+<!-- 028 - Time Lapse Calculator -->
+
+<b>Status Notes:</b>Next steps: focus on one of the versions and make simpler/more direct to use.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/028-c'</a>github_working-files/028-c</li>
+</ul>
+</details>

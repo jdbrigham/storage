@@ -1,0 +1,9 @@
+<!-- 010 - New landing page -->
+
+<b>Status Notes:</b>Current js version is stable.  Could next add other features (text, hidden menus) back in</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/010-new-landing-page/'</a>github_working-files/010-new-landing-page/</li>
+</ul>
+</details>

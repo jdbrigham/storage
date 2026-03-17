@@ -1,0 +1,9 @@
+<!-- 025 - Lakee Game -->
+
+<b>Status Notes:</b>Haven't touched it in a while, need more questions.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Library/Mobile Documents/com~apple~CloudDocs/Files/Linkee'</a>CloudDocs/Files/Linkee</li>
+</ul>
+</details>

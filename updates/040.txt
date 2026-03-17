@@ -1,0 +1,17 @@
+<!-- 040 - code library -->
+
+<b>Status Notes/Next Steps:</b>Current version is good and stable.  Next I may still want to make changes to the home screen.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/localhost_working-files/code-library'</a>localhost_working-files/code-library</a></li>
+<li>Links for reference
+<ul>
+<li><a href='https://blog.devgenius.io/how-to-make-a-typing-animation-with-javascript-87b9438d845e' target='_blank'>Create a Typing Animation with JavaScript | by Jacob Narayan | Dev Genius</a></li>
+<li><a href='https://codepen.io/tjezidzic/pen/LLWoLw' target='_blank'>Vintage terminal typing effect</a></li>
+<li><a href='https://www.cssscript.com/best-text-animation-libraries/' target='_blank'>10 Best Typewriter Text Animation JavaScript Libraries (2025 Update) - CSS Script</a></li>
+<li><a href='https://calderaricaio.medium.com/animation-tools-javascript-svg-html-css-react-and-others-b63bd6fec95f' target='_blank'>Animation Tools — Javascript, SVG, HTML, CSS, React and others. | by Caio Calderari | Medium</a></li>
+</ul>
+</li>
+<li>Notes: <a href='statusnotes/040.html' target="_blank">Project 040 Notes</a></li>
+</ul>

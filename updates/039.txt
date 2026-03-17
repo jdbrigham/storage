@@ -1,0 +1,9 @@
+<!-- 039 - Applescripts organization -->
+
+<b>Status Notes/Next Steps:</b>Files are organized into a variety of subfolders in '039-collected-scripts'.  Needs more sorting and probably pruning.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/019-collected-scripts'</a>Projects/019-collected-scripts</li>
+</ul>
+</details>

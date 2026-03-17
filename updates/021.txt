@@ -1,0 +1,11 @@
+<!-- 021 - Catalog of Anniversary Numbers -->
+
+<b>Status Notes:</b>Continue to try to find and also think on what to do in terms of presentation</p>
+<details>
+<summary>More Info</summary>
+<ul>
+	<li>Files: 
+	<a href='file:////Users/jbrigham/Library/CloudStorage/OneDrive-Personal/BullpenProjects/'>OneDrive-Personal/BullpenProjects/</a></li>
+<li>Still missing:  1,2,5,9,12-17,(24)</li>
+</ul>
+</details>

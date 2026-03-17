@@ -1,0 +1,9 @@
+<!-- 006 - Dock Illustration -->
+
+<b>Status Notes:</b>Pretty much at a pause point as I'm not entirely sure where to go next</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/006-dock-illustration/'</a>mbp.local_working-files/006-dock-illustration/</li>
+</ul>
+</details>

@@ -1,0 +1,9 @@
+<!-- 004 - Image Variations -->
+
+<b>Status Notes:</b>Pretty much done and hasn't been touched in a while.  Could work to update design and add new images</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/004-image-variations/'</a>mbp.local_working-files/004-image-variations/</li>
+</ul>
+</details>

@@ -1,0 +1,9 @@
+<!-- 034 - Compass for Gyroscopic Panorama -->
+
+<b>Status Notes:</b>Just getting started here - more files are mixed in with other gyroscope files (probably)</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/034-compass'</a>mbp.local_working-files/034-compass</li>
+</ul>
+</details>

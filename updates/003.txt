@@ -1,0 +1,9 @@
+<!-- 003 - Sunrise/Sunset -->
+
+<b>Status Notes:</b> Existing site uses a ton of php.  I have downloaded a js equivalent for the base calculations but need to rebuild the structure around that.  To do that, use styled pages from /w directory to get started.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/003-sun/sun-w/'</a>github_working-files/003-sun/sun-w/</li>
+</ul>
+</details>

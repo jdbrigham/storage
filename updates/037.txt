@@ -1,0 +1,9 @@
+<!-- 037 - Photo Projects Dashboard -->
+
+<b>Status Notes:</b>Continue to work on spreadsheet to feed it, make sure we have all the previews gathered, work towards an initial release.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/localhost_working-files/photo-projects'</a>localhost_working-files/photo-projects</li>
+</ul>
+</details>

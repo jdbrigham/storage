@@ -1,0 +1,10 @@
+<!-- 014 - Postcard branch projects -->
+
+<b>Status Notes:</b>Next steps are to consolidate and define the ideas/options.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/014-postcardbranches'</a>mbp.local_working-files/014-postcardbranches</li>
+<li>Notes: <a href='statusnotes/014.html' target="_blank">Project 014 Notes</a></li>
+</ul>
+</details>

@@ -1,0 +1,9 @@
+<!-- 016 - Taylor Swift Clean Speeches -->
+
+<b>Status Notes:</b>Done but check qr code.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/016-tsclean'</a>mbp.local_working-files/016-tsclean</li>
+</ul>
+</details>

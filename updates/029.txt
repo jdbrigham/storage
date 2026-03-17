@@ -1,0 +1,9 @@
+<!-- 029 - Aperture Animation -->
+
+<b>Status Notes:</b>Done.  Useful anywhere?</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/github_working-files/029-lens'</a>github_working-files/029-lens</li>
+</ul>
+</details>

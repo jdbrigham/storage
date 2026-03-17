@@ -1,0 +1,10 @@
+<!-- 024 - Tripod Desk -->
+
+<b>Status Notes:</b>Version 1 is done, working on version 2</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>
+Check in basement</li>
+</ul>
+</details>

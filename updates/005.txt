@@ -1,0 +1,10 @@
+<!-- 005 - Animated SVG KML -->
+
+<b>Status Notes:</b>This would be an interesting thing to revisit now that I have a better understanding of svg animation etc.</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/005-svgkml/'</a>mbp.local_working-files/005-svgkml/</li>
+<li>Notes: <a href='statusnotes/005.html' target="_blank">Project 005 Notes</a></li>
+</ul>
+</details>

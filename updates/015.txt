@@ -1,0 +1,10 @@
+<!-- 015 - Animated Photo Collage -->
+
+<b>Status Notes:</b>Create an initial basic version (no dates/metadata etc.) and then also map out including those other features such as background text</p>
+<details>
+<summary>More Info</summary>
+<ul>
+<li>Files: <a href='file:///Users/jbrigham/Projects/html-js-css/mbp.local_working-files/015-animatedcollage'</a>mbp.local_working-files/015-animatedcollage</li>
+<li>Notes: <a href='statusnotes/015.html' target="_blank">Project 015 Notes</a></li>
+</ul>
+</details>
